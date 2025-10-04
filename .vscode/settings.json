@@ -1,0 +1,19 @@
+{
+  "files.autoSave": "afterDelay",
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "explorer.fileNesting.enabled": true,
+  "explorer.fileNesting.patterns": {
+    "package.json": "pnpm-lock.yaml",
+    ".gitignore": ".gitattributes",
+    "astro.config.mjs": "tsconfig.json, README.md",
+    ".editorconfig": "biome.json, .prettierrc, .prettierignore",
+    ".env": ".env*"
+  },
+  "editor.insertSpaces": true,
+  "editor.tabSize": 2,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.biome": "explicit"
+  },
+  "typescript.tsdk": "node_modules/typescript/lib"
+}

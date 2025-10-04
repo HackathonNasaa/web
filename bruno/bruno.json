@@ -1,0 +1,6 @@
+{
+  "version": "1",
+  "name": "Hackaton Nasa",
+  "type": "collection",
+  "ignore": ["node_modules", ".git", ".vscode"]
+}
