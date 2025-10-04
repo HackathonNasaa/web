@@ -3,11 +3,13 @@
   "include": [".astro/types.d.ts", "**/*"],
   "exclude": ["dist"],
   "compilerOptions": {
+    "baseUrl": ".",
     "verbatimModuleSyntax": true,
     "paths": {
       "@components/*": ["./src/components/*"],
       "@layouts/*": ["./src/components/*"],
       "@assets/*": ["./src/assets/*"],
+      "@styles/*": ["./src/assets/*"],
       "@/*": ["./src/*"],
       "@kv": ["./src/kv"]
     }

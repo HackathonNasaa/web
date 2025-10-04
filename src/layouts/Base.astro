@@ -1,0 +1,18 @@
+---
+import Footer from "@components/Footer.astro";
+import NavBar from "@components/NavBar.astro";
+import Layout from "./Layout.astro";
+
+interface Props {
+  title: string;
+  description?: string;
+}
+---
+
+<Layout {...Astro.props}>
+  <NavBar />
+  <main class="container mx-auto">
+    <slot />
+  </main>
+  <Footer />
+</Layout>

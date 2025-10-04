@@ -1,0 +1,37 @@
+---
+const pages = {
+  "/home": "Home",
+  "/game": "Game",
+  "/about": "About"
+};
+
+const current = Astro.url.pathname;
+---
+
+<nav
+  class="flex items-center justify-between px-15 py-4 text-white border-b border-gray-500 mb-7"
+>
+  <div class="flex gap-2">
+    <b>icon</b>
+    <span>NOME DO SITE</span>
+  </div>
+
+  <ul class="flex list-none gap-4">
+    {
+      Object.entries(pages).map(([path, page]) =>
+        path === current ? (
+          <li class="rounded-full border-2 border-gray-400 px-8 py-2">{page}</li>
+        ) : (
+          <a href={path}>
+            <li class="border-2 border-transparent px-8 py-2">{page}</li>
+          </a>
+        )
+      )
+    }
+  </ul>
+</nav>
+
+<style>
+  nav {
+  }
+</style>
