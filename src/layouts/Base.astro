@@ -10,8 +10,10 @@ interface Props {
 ---
 
 <Layout {...Astro.props}>
+  <slot name="head" slot="head" />
+
   <NavBar />
-  <main class="container mx-auto">
+  <main class="container mx-auto px-5 lg:max-w-6xl">
     <slot />
   </main>
   <Footer />

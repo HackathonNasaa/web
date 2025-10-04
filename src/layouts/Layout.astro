@@ -10,9 +10,19 @@ interface Props {
 
 <!doctype html>
 <html lang="en">
-  <Head {...Astro.props} />
+  <Head {...Astro.props}>
+    <slot name="head" />
+  </Head>
+
   <body class="bg-purple-950 w-screen h-screen">
 
     <slot />
   </body>
 </html>
+
+<style>
+  * {
+    font-family: var(--font-text);
+  }
+</style>
+
