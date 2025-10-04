@@ -16,25 +16,31 @@ importers:
         version: 0.18.0
       '@astrojs/node':
         specifier: ^9.4.4
-        version: 9.4.4(astro@5.14.1(@types/node@24.6.2)(@vercel/functions@2.2.13)(jiti@2.6.1)(lightningcss@1.30.1)(rollup@4.52.3)(typescript@5.9.3)(yaml@2.8.1))
+        version: 9.4.4(astro@5.14.1(@types/node@24.6.2)(@vercel/functions@2.2.13)(db0@0.3.4(@libsql/client@0.15.15)(drizzle-orm@0.42.0(@libsql/client@0.15.15)))(jiti@2.6.1)(lightningcss@1.30.1)(rollup@4.52.3)(typescript@5.9.3)(yaml@2.8.1))
       '@astrojs/sitemap':
         specifier: ^3.6.0
         version: 3.6.0
       '@astrojs/vercel':
         specifier: ^8.2.8
-        version: 8.2.8(astro@5.14.1(@types/node@24.6.2)(@vercel/functions@2.2.13)(jiti@2.6.1)(lightningcss@1.30.1)(rollup@4.52.3)(typescript@5.9.3)(yaml@2.8.1))(rollup@4.52.3)
+        version: 8.2.8(astro@5.14.1(@types/node@24.6.2)(@vercel/functions@2.2.13)(db0@0.3.4(@libsql/client@0.15.15)(drizzle-orm@0.42.0(@libsql/client@0.15.15)))(jiti@2.6.1)(lightningcss@1.30.1)(rollup@4.52.3)(typescript@5.9.3)(yaml@2.8.1))(rollup@4.52.3)
+      '@libsql/client':
+        specifier: ^0.15.15
+        version: 0.15.15
       '@tailwindcss/vite':
         specifier: ^4.1.14
         version: 4.1.14(vite@6.3.6(@types/node@24.6.2)(jiti@2.6.1)(lightningcss@1.30.1)(yaml@2.8.1))
       astro:
         specifier: ^5.14.1
-        version: 5.14.1(@types/node@24.6.2)(@vercel/functions@2.2.13)(jiti@2.6.1)(lightningcss@1.30.1)(rollup@4.52.3)(typescript@5.9.3)(yaml@2.8.1)
+        version: 5.14.1(@types/node@24.6.2)(@vercel/functions@2.2.13)(db0@0.3.4(@libsql/client@0.15.15)(drizzle-orm@0.42.0(@libsql/client@0.15.15)))(jiti@2.6.1)(lightningcss@1.30.1)(rollup@4.52.3)(typescript@5.9.3)(yaml@2.8.1)
       astro-icon:
         specifier: ^1.1.5
         version: 1.1.5
       axios:
         specifier: ^1.12.2
         version: 1.12.2
+      db0:
+        specifier: ^0.3.4
+        version: 0.3.4(@libsql/client@0.15.15)(drizzle-orm@0.42.0(@libsql/client@0.15.15))
       tailwindcss:
         specifier: ^4.1.14
         version: 4.1.14
@@ -43,7 +49,7 @@ importers:
         version: 5.9.3
       unstorage:
         specifier: ^1.17.1
-        version: 1.17.1(@vercel/functions@2.2.13)
+        version: 1.17.1(@vercel/functions@2.2.13)(db0@0.3.4(@libsql/client@0.15.15)(drizzle-orm@0.42.0(@libsql/client@0.15.15)))
     devDependencies:
       '@biomejs/biome':
         specifier: ^2.2.5
@@ -1275,6 +1281,29 @@ packages:
   data-uri-to-buffer@4.0.1:
     resolution: {integrity: sha512-0R9ikRb668HB7QDxT1vkpuUBtqc53YyAwMwGeUFKRojY/NWKvdZ+9UYtRfGmhqNbRkTSVpMbmyhXipFFv2cb/A==}
     engines: {node: '>= 12'}
+
+  db0@0.3.4:
+    resolution: {integrity: sha512-RiXXi4WaNzPTHEOu8UPQKMooIbqOEyqA1t7Z6MsdxSCeb8iUC9ko3LcmsLmeUt2SM5bctfArZKkRQggKZz7JNw==}
+    peerDependencies:
+      '@electric-sql/pglite': '*'
+      '@libsql/client': '*'
+      better-sqlite3: '*'
+      drizzle-orm: '*'
+      mysql2: '*'
+      sqlite3: '*'
+    peerDependenciesMeta:
+      '@electric-sql/pglite':
+        optional: true
+      '@libsql/client':
+        optional: true
+      better-sqlite3:
+        optional: true
+      drizzle-orm:
+        optional: true
+      mysql2:
+        optional: true
+      sqlite3:
+        optional: true
 
   debug@4.4.3:
     resolution: {integrity: sha512-RGwwWnwQvkVfavKVt22FGLw+xYSdzARwm0ru6DhTVA3umU5hZc28V3kO4stgYryrTlLpuvgI9GiijltAjNbcqA==}
@@ -3203,10 +3232,10 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@astrojs/node@9.4.4(astro@5.14.1(@types/node@24.6.2)(@vercel/functions@2.2.13)(jiti@2.6.1)(lightningcss@1.30.1)(rollup@4.52.3)(typescript@5.9.3)(yaml@2.8.1))':
+  '@astrojs/node@9.4.4(astro@5.14.1(@types/node@24.6.2)(@vercel/functions@2.2.13)(db0@0.3.4(@libsql/client@0.15.15)(drizzle-orm@0.42.0(@libsql/client@0.15.15)))(jiti@2.6.1)(lightningcss@1.30.1)(rollup@4.52.3)(typescript@5.9.3)(yaml@2.8.1))':
     dependencies:
       '@astrojs/internal-helpers': 0.7.3
-      astro: 5.14.1(@types/node@24.6.2)(@vercel/functions@2.2.13)(jiti@2.6.1)(lightningcss@1.30.1)(rollup@4.52.3)(typescript@5.9.3)(yaml@2.8.1)
+      astro: 5.14.1(@types/node@24.6.2)(@vercel/functions@2.2.13)(db0@0.3.4(@libsql/client@0.15.15)(drizzle-orm@0.42.0(@libsql/client@0.15.15)))(jiti@2.6.1)(lightningcss@1.30.1)(rollup@4.52.3)(typescript@5.9.3)(yaml@2.8.1)
       send: 1.2.0
       server-destroy: 1.0.1
     transitivePeerDependencies:
@@ -3234,14 +3263,14 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@astrojs/vercel@8.2.8(astro@5.14.1(@types/node@24.6.2)(@vercel/functions@2.2.13)(jiti@2.6.1)(lightningcss@1.30.1)(rollup@4.52.3)(typescript@5.9.3)(yaml@2.8.1))(rollup@4.52.3)':
+  '@astrojs/vercel@8.2.8(astro@5.14.1(@types/node@24.6.2)(@vercel/functions@2.2.13)(db0@0.3.4(@libsql/client@0.15.15)(drizzle-orm@0.42.0(@libsql/client@0.15.15)))(jiti@2.6.1)(lightningcss@1.30.1)(rollup@4.52.3)(typescript@5.9.3)(yaml@2.8.1))(rollup@4.52.3)':
     dependencies:
       '@astrojs/internal-helpers': 0.7.3
       '@vercel/analytics': 1.5.0
       '@vercel/functions': 2.2.13
       '@vercel/nft': 0.30.2(rollup@4.52.3)
       '@vercel/routing-utils': 5.1.1
-      astro: 5.14.1(@types/node@24.6.2)(@vercel/functions@2.2.13)(jiti@2.6.1)(lightningcss@1.30.1)(rollup@4.52.3)(typescript@5.9.3)(yaml@2.8.1)
+      astro: 5.14.1(@types/node@24.6.2)(@vercel/functions@2.2.13)(db0@0.3.4(@libsql/client@0.15.15)(drizzle-orm@0.42.0(@libsql/client@0.15.15)))(jiti@2.6.1)(lightningcss@1.30.1)(rollup@4.52.3)(typescript@5.9.3)(yaml@2.8.1)
       esbuild: 0.25.10
       tinyglobby: 0.2.15
     transitivePeerDependencies:
@@ -4100,7 +4129,7 @@ snapshots:
       - debug
       - supports-color
 
-  astro@5.14.1(@types/node@24.6.2)(@vercel/functions@2.2.13)(jiti@2.6.1)(lightningcss@1.30.1)(rollup@4.52.3)(typescript@5.9.3)(yaml@2.8.1):
+  astro@5.14.1(@types/node@24.6.2)(@vercel/functions@2.2.13)(db0@0.3.4(@libsql/client@0.15.15)(drizzle-orm@0.42.0(@libsql/client@0.15.15)))(jiti@2.6.1)(lightningcss@1.30.1)(rollup@4.52.3)(typescript@5.9.3)(yaml@2.8.1):
     dependencies:
       '@astrojs/compiler': 2.13.0
       '@astrojs/internal-helpers': 0.7.3
@@ -4154,7 +4183,7 @@ snapshots:
       ultrahtml: 1.6.0
       unifont: 0.5.2
       unist-util-visit: 5.0.0
-      unstorage: 1.17.1(@vercel/functions@2.2.13)
+      unstorage: 1.17.1(@vercel/functions@2.2.13)(db0@0.3.4(@libsql/client@0.15.15)(drizzle-orm@0.42.0(@libsql/client@0.15.15)))
       vfile: 6.0.3
       vite: 6.3.6(@types/node@24.6.2)(jiti@2.6.1)(lightningcss@1.30.1)(yaml@2.8.1)
       vitefu: 1.1.1(vite@6.3.6(@types/node@24.6.2)(jiti@2.6.1)(lightningcss@1.30.1)(yaml@2.8.1))
@@ -4393,6 +4422,11 @@ snapshots:
       css-tree: 2.2.1
 
   data-uri-to-buffer@4.0.1: {}
+
+  db0@0.3.4(@libsql/client@0.15.15)(drizzle-orm@0.42.0(@libsql/client@0.15.15)):
+    optionalDependencies:
+      '@libsql/client': 0.15.15
+      drizzle-orm: 0.42.0(@libsql/client@0.15.15)
 
   debug@4.4.3:
     dependencies:
@@ -6007,7 +6041,7 @@ snapshots:
       unist-util-is: 6.0.0
       unist-util-visit-parents: 6.0.1
 
-  unstorage@1.17.1(@vercel/functions@2.2.13):
+  unstorage@1.17.1(@vercel/functions@2.2.13)(db0@0.3.4(@libsql/client@0.15.15)(drizzle-orm@0.42.0(@libsql/client@0.15.15))):
     dependencies:
       anymatch: 3.1.3
       chokidar: 4.0.3
@@ -6019,6 +6053,7 @@ snapshots:
       ufo: 1.6.1
     optionalDependencies:
       '@vercel/functions': 2.2.13
+      db0: 0.3.4(@libsql/client@0.15.15)(drizzle-orm@0.42.0(@libsql/client@0.15.15))
 
   uri-js@4.4.1:
     dependencies:
