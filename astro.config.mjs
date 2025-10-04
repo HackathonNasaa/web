@@ -10,7 +10,9 @@ import icon from "astro-icon";
 export default defineConfig({
   output: "server",
   adapter: vercel({
-    isr: true
+    isr: {
+      exclude: [/^\/api\/?.*/]
+    }
   }),
   integrations: [db(), icon(), sitemap()],
   vite: {
@@ -23,6 +25,7 @@ export default defineConfig({
     defaultStrategy: "hover",
     prefetchAll: true
   },
+  site: "https://meteors-ten.vercel.app",
   experimental: {
     fonts: [
       {
