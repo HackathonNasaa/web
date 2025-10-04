@@ -1,7 +1,7 @@
 // @ts-check
 import db from "@astrojs/db";
-import node from "@astrojs/node";
 import sitemap from "@astrojs/sitemap";
+import vercel from "@astrojs/vercel";
 import tailwindcss from "@tailwindcss/vite";
 import { defineConfig, fontProviders } from "astro/config";
 import icon from "astro-icon";
@@ -9,8 +9,8 @@ import icon from "astro-icon";
 // https://astro.build/config
 export default defineConfig({
   output: "server",
-  adapter: node({
-    mode: "standalone"
+  adapter: vercel({
+    isr: true
   }),
   integrations: [db(), icon(), sitemap()],
   vite: {
