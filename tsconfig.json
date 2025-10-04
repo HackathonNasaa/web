@@ -6,12 +6,8 @@
     "baseUrl": ".",
     "verbatimModuleSyntax": true,
     "paths": {
-      "@components/*": ["./src/components/*"],
-      "@layouts/*": ["./src/components/*"],
-      "@assets/*": ["./src/assets/*"],
-      "@styles/*": ["./src/assets/*"],
+      "@*": ["./src/*"],
       "@/*": ["./src/*"],
-      "@kv": ["./src/kv"]
     }
   }
 }

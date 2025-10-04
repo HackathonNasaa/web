@@ -19,7 +19,7 @@ export default defineConfig({
     plugins: [tailwindcss()]
   },
   image: {
-    domains: ["picsum.photos"]
+    domains: ["picsum.photos", "apod.nasa.gov"]
   },
   prefetch: {
     defaultStrategy: "hover",
@@ -35,9 +35,7 @@ export default defineConfig({
       },
       {
         provider: fontProviders.google(),
-        name: "Kanit",
-        weights: [400, 500, 600, 700],
-        styles: ["normal", "italic"],
+        name: "Chivo",
         cssVariable: "--font-text"
       }
     ]
