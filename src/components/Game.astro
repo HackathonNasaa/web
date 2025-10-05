@@ -66,9 +66,11 @@ export const prerender = true;
   };
 
   const GODOT_THREADS_ENABLED = false;
-  const engine = new Engine(GODOT_CONFIG);
+  let engine;
 
   document.addEventListener("astro:page-load", function () {
+    engine = new Engine(GODOT_CONFIG);
+
     const statusOverlay = document.getElementById("status");
     const statusProgress = document.getElementById("status-progress");
     const statusNotice = document.getElementById("status-notice");
