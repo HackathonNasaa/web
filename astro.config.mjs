@@ -17,7 +17,7 @@ export default defineConfig({
   }),
   integrations: [db(), icon(), sitemap()],
   vite: {
-    plugins: [tailwindcss(), mkcert()]
+    plugins: [tailwindcss(), mkcert()],
   },
   image: {
     domains: ["picsum.photos", "apod.nasa.gov"]

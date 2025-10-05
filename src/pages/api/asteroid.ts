@@ -12,7 +12,7 @@ const smass_rocky = new Set(["A", "K", "L", "Q", "R"]);
 
 const G = 6.6743e-11;
 
-type Asteroid = {
+export type Asteroid = {
   name?: string;
   fullName?: string;
   spkid: number;
@@ -111,7 +111,7 @@ export const GET: APIRoute = async () => {
       spkid: Number(asteroid[1]),
       fullName: asteroid[2].trim(),
       diameter: asteroid[4] && Number(asteroid[3]),
-      mass: asteroid[4] && Number(asteroid[4]) / G,
+      mass: asteroid[4] && (Number(asteroid[4]) / G) * 1e6,
       composition
     });
   });

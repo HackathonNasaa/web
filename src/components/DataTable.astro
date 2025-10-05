@@ -1,0 +1,226 @@
+---
+interface Props {
+  data: Record<string, unknown>[];
+  columns: Record<string, string | number | boolean>[];
+}
+
+const { data, columns } = Astro.props;
+---
+
+<table
+  is="data-table"
+  data-content={JSON.stringify(data)}
+  data-columns={JSON.stringify(columns)}
+>
+  <thead>
+    <slot name="header" />
+  </thead>
+  <tbody>
+    <slot />
+  </tbody>
+  <tfoot>
+    <slot name="footer" />
+  </tfoot>
+</table>
+
+<style is:global>
+  @reference "../styles/global.css";
+
+  table[is="data-table"] {
+    @apply text-white;
+
+    th {
+      @apply text-gray-300;
+    }
+
+    td,
+    th {
+      @apply min-w-60 border p-2;
+    }
+  }
+</style>
+
+<script>
+  import {
+    createTable,
+    getCoreRowModel,
+    type ColumnDef,
+    type Table,
+    getFilteredRowModel,
+    getSortedRowModel,
+    type SortingState
+  } from "@tanstack/table-core";
+
+  import { atom } from "nanostores";
+
+  function flexRender<TProps extends object>(comp: any, props: TProps) {
+    if (typeof comp === "function") {
+      return comp(props);
+    }
+    return comp;
+  }
+
+  class DataTableComponent<
+    T extends Record<string, unknown>
+  > extends HTMLTableElement {
+    #data?: T[] | undefined;
+    #columns?: ColumnDef<T, any>[] | undefined;
+
+    #thead!: HTMLTableSectionElement;
+    #tbody!: HTMLTableSectionElement;
+
+    sorting: SortingState;
+    // #tfoot!: HTMLTableSectionElement;
+
+    table?: Table<T>;
+
+    constructor() {
+      super();
+      this.sorting = [];
+    }
+
+    buildContent() {
+      if (!this.table) return;
+
+      const tbody = document.createElement("tbody");
+
+      for (const attribute of this.#tbody.attributes) {
+        tbody.setAttribute(attribute.nodeName, attribute.nodeValue!);
+      }
+
+      this.table.getRowModel().rows.forEach((row) => {
+        const tr = document.createElement("tr");
+        row.getVisibleCells().forEach((cell) => {
+          const td = document.createElement("td");
+          td.innerHTML = flexRender(
+            cell.column.columnDef.cell,
+            cell.getContext()
+          );
+          tr.appendChild(td);
+        });
+        tbody.appendChild(tr);
+      });
+
+      this.#tbody.replaceWith(tbody);
+      this.#tbody = tbody;
+    }
+
+    addData(d: T) {
+      this.#data?.push(d);
+      this.buildContent();
+    }
+
+    buildHeaders() {
+      if (!this.table) return;
+
+      const thead = document.createElement("thead");
+
+      for (const attribute of this.#thead.attributes) {
+        thead.setAttribute(attribute.nodeName, attribute.nodeValue!);
+      }
+
+      this.table.getHeaderGroups().forEach((hg) => {
+        const tr = document.createElement("tr");
+        hg.headers.forEach((header) => {
+          const th = document.createElement("th");
+          th.colSpan = header.colSpan;
+
+          th.innerHTML = header.isPlaceholder
+            ? ""
+            : flexRender(header.column.columnDef.header, header.getContext());
+          tr.append(th);
+
+          if (!header.column.getCanSort()) return;
+
+          const div = document.createElement("div");
+          div.classList.add(
+            "w-36",
+            ...(header.column.getCanSort()
+              ? ["cursor-pointer", "select-none"]
+              : [])
+          );
+          div.onclick = (e) => {
+            if (header.column.getToggleSortingHandler()) {
+              console.log("hiiiiii");
+              header.column.getToggleSortingHandler()?.(e);
+            }
+          };
+
+          div.innerHTML +=
+            {
+              asc: " 🔼",
+              desc: " 🔽"
+            }[header.column.getIsSorted() as string] ?? "sort";
+          th.appendChild(div);
+        });
+        thead.append(tr);
+      });
+
+      this.#thead.replaceWith(thead);
+      this.#thead = thead;
+    }
+
+    connectedCallback() {
+      this.#thead = this.querySelector("thead")!;
+      this.#tbody = this.querySelector("tbody")!;
+      // this.#tfoot = this.querySelector("tfoot")!;
+
+      const dataContent = this.dataset["content"];
+      if (!dataContent) return;
+      this.#data = JSON.parse(dataContent);
+
+      const dataColumns = this.dataset["columns"];
+      if (!dataColumns) return;
+      this.#columns = JSON.parse(dataColumns);
+
+      const options = {
+        data: this.#data!,
+        columns: this.#columns!,
+        onStateChange: (_a: any) => {
+          console.log("hi");
+          this.buildHeaders();
+          this.buildContent();
+          console.log(this.table?.getState().sorting);
+        },
+        state: {},
+        getCoreRowModel: getCoreRowModel(),
+        getSortedRowModel: getSortedRowModel(),
+        getFilteredRowModel: getFilteredRowModel(),
+        renderFallbackValue: null
+      };
+
+      this.table = createTable(options);
+
+      const state = atom(this.table.initialState);
+
+      // Subscribe to state changes
+      state.subscribe((currentState) => {
+        this.table?.setOptions((prev) => ({
+          ...prev,
+          ...options,
+          state: {
+            ...currentState,
+            ...options.state
+          },
+          // Similarly, we'll maintain both our internal state and any user-provided state
+          onStateChange: (updater) => {
+            if (typeof updater === "function") {
+              const newState = updater(currentState);
+              state.set(newState);
+            } else {
+              state.set(updater);
+            }
+            options.onStateChange?.(updater);
+          }
+        }));
+      });
+
+      this.buildHeaders();
+      this.buildContent();
+    }
+  }
+
+  customElements.define("data-table", DataTableComponent, {
+    extends: "table"
+  });
+</script>
