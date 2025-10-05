@@ -36,7 +36,7 @@ export default defineConfig({
       },
       {
         provider: fontProviders.google(),
-        name: "Chivo",
+        name: "Glacial Indifference",
         cssVariable: "--font-text"
       }
     ]

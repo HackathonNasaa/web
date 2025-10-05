@@ -14,11 +14,11 @@ const G = 6.6743e-11;
 
 type Asteroid = {
   name?: string;
-  fullName: string;
+  fullName?: string;
   spkid: number;
   mass: number;
-  diameter: number;
-  composition?: composition;
+  diameter?: number;
+  composition: composition;
 };
 
 const fields = [
@@ -82,7 +82,6 @@ export const GET: APIRoute = async () => {
       "sb-cdata": JSON.stringify({
         AND: [
           "GM|DF",
-          "diameter|DF",
           {
             OR: ["spec_T|DF", "spec_B|DF"]
           }

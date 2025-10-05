@@ -1,11 +1,20 @@
 ---
-import "../styles/global.css";
-import Head from "@components/Head.astro";
+import "@styles/global.css";
 
 interface Props {
   title: string;
   description?: string;
 }
+
+import { getImage } from "astro:assets";
+import Backdrop from "@assets/backdrop.jpg";
+import Head from "@components/Head.astro";
+
+const backgroundImage = (
+  await getImage({
+    src: Backdrop
+  })
+).src;
 ---
 
 <!doctype html>
@@ -14,15 +23,17 @@ interface Props {
     <slot name="head" />
   </Head>
 
-  <body class="bg-purple-950 w-screen h-screen">
-
+  <body class="h-screen w-screen bg-purple-950">
     <slot />
   </body>
 </html>
 
-<style>
+<style define:vars={{backgroundImage: `url("${backgroundImage}")`}}>
   * {
     font-family: var(--font-text);
   }
-</style>
 
+  body {
+    background-image: var(--backgroundImage);
+  }
+</style>
