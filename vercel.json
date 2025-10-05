@@ -2,11 +2,31 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "headers": [
     {
-      "source": "*",
+      "source": "/(.*)",
       "headers": [
         {
+          "key": "Content-Security-Policy",
+          "value": "default-src https: data: 'unsafe-inline' 'unsafe-eval'"
+        },
+        {
           "key": "Permissions-Policy",
-          "value": "cross-origin-isolated=*, fullscreen=*, gamepad=*"
+          "value": "autoplay=(), cross-origin-isolated=(), fullscreen=(), gamepad=()"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "no-referrer-when-downgrade"
+        },
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "DENY"
+        },
+        {
+          "key": "X-XSS-Protection",
+          "value": "1; mode=block"
         }
       ]
     }
