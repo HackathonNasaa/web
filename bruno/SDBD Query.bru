@@ -1,0 +1,17 @@
+meta {
+  name: SDBD Query
+  type: http
+  seq: 7
+}
+
+get {
+  url: https://ssd-api.jpl.nasa.gov/sbdb_query.api?fields=name,spkid,full_name,albedo,spec_T,spec_B,diameter,GM&limit=500
+  body: none
+  auth: none
+}
+
+params:query {
+  fields: name,spkid,full_name,albedo,spec_T,spec_B,diameter,GM
+  limit: 500
+  : 
+}

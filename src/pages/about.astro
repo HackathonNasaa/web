@@ -1,50 +1,62 @@
 ---
-import Ase from "../assets/ase.svg"
-import AstroLogo from "../assets/astrologo.svg"
-import Base from "@/layouts/Base.astro"
-import Card from "../components/Card.astro"
-import Flstudio from "@/assets/fl.svg"
-import Git from "@/assets/git.svg"
-import Godot from "@/assets/godot.svg"
-import Inkscape from "@/assets/inkscape.svg"
-import Nasa from "@/assets/nasa.svg"
-import TailWind from "@/assets/tailwind.svg"
+import Ase from "@assets/ase.svg";
+import AstroLogo from "@assets/astrologo.svg";
+import Flstudio from "@assets/fl.svg";
+import Git from "@assets/git.svg";
+import Godot from "@assets/godot.svg";
+import Inkscape from "@assets/inkscape.svg";
+import Nasa from "@assets/nasa.svg";
+import Tailwind from "@assets/tailwind.svg";
+import Card from "@components/Card.astro";
+import Base from "@layouts/Base.astro";
 ---
-<!--
-nasa api-->
-<Base title="About">
-  <h1 class="text-white text-4xl mx-auto w-max">Ferramentas e Tecnologias</h1>
-  <div class="grid grid-cols-2 gap-2">
-    <Card title = "Godot"
-  descricao = "Godot é uma game engine utilizada para criação de jogos 2D e 3D."
-  Imagem = {Godot}
-  />
-  <Card title = "Aseprite"
-  descricao = "Aseprite é um editor de sprites e uma ferramenta de pixel art."
-  Imagem = {Ase}
-  />
-  <Card title = "Astro"
-  descricao = "Astro é um framework web otimizada para a construção de sites rápidos e eficientes."
-  Imagem = {AstroLogo}
-  />
-  <Card title = "Tailwind"
-  descricao = "Tailwind é um framework de CSS que providencia classes pré-definidas, permitindo uma estilização mais rápida. "
-  Imagem = {TailWind}/>
-  <Card title = "FL Studio"
-  descricao = "FL Studio é uma Digital Audio Workstation(DAW), usado não apenas para a produção de músicas, mas também de efeitos sonoros.",
-  Imagem = {Flstudio}/>
-  <Card title = "Nasa API"
-  descricao = "A coleção de APIs da NASA permite o acesso a dados sobre astronomia, meteoros, satélites, entre outros."
-  Imagem = {Nasa}/>
-  <Card title = "Inkscape"
-  descricao = "Inkscape é um programa de edição de vetores."
-  Imagem = {Inkscape}/>
-  <Card title = "Git/Github"
-  descricao = "Git é um sistema de controle de versionamento. GitHub é uma plataforma que hospeda repositórios Git."
-  Imagem = {Git}
-  />
-  </div>
 
+<!--nasa api-->
+<Base title="About">
+  <h1 class="mx-auto w-max text-4xl text-white">Ferramentas e Tecnologias</h1>
+  <div class="grid grid-cols-2 gap-2">
+    <Card
+      title="Godot"
+      descricao="Godot é uma game engine utilizada para criação de jogos 2D e 3D."
+      Imagem={Godot}
+    />
+    <Card
+      title="Aseprite"
+      descricao="Aseprite é um editor de sprites e uma ferramenta de pixel art."
+      Imagem={Ase}
+    />
+    <Card
+      title="Astro"
+      descricao="Astro é um framework web otimizada para a construção de sites rápidos e eficientes."
+      Imagem={AstroLogo}
+    />
+    <Card
+      title="Tailwind"
+      descricao="Tailwind é um framework de CSS que providencia classes pré-definidas, permitindo uma estilização mais rápida. "
+      Imagem={Tailwind}
+    />
+    <Card
+      title="FL Studio"
+      descricao="FL Studio é uma Digital Audio Workstation(DAW), usado não apenas para a produção de músicas, mas também de efeitos sonoros."
+      ,
+      Imagem={Flstudio}
+    />
+    <Card
+      title="Nasa API"
+      descricao="A coleção de APIs da NASA permite o acesso a dados sobre astronomia, meteoros, satélites, entre outros."
+      Imagem={Nasa}
+    />
+    <Card
+      title="Inkscape"
+      descricao="Inkscape é um programa de edição de vetores."
+      Imagem={Inkscape}
+    />
+    <Card
+      title="Git/Github"
+      descricao="Git é um sistema de controle de versionamento. GitHub é uma plataforma que hospeda repositórios Git."
+      Imagem={Git}
+    />
+  </div>
 </Base>
 
 <style>

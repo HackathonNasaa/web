@@ -1,7 +1,7 @@
 import { defineAction } from "astro:actions";
 import { z } from "astro:schema";
 
-import * as nasa from "@/nasa"
+import * as nasa from "@/nasa";
 
 export const server = {
   comment: defineAction({
@@ -11,7 +11,7 @@ export const server = {
       params: z.record(z.string()).optional()
     }),
     handler: async (input) => {
-      return nasa.fetchFromNasa(input.path, input.params)
+      return nasa.queryAPI(input.path, input.params);
     }
   })
 };

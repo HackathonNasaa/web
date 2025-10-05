@@ -1,0 +1,21 @@
+meta {
+  name: SBDB
+  type: http
+  seq: 6
+}
+
+get {
+  url: https://ssd-api.jpl.nasa.gov/sbdb.api?spk={{sstr}}&phys-par=true
+  body: none
+  auth: none
+}
+
+params:query {
+  spk: {{sstr}}
+  phys-par: true
+  ~api_key: {{nasa_key}}
+}
+
+vars:pre-request {
+  sstr: 20000016
+}

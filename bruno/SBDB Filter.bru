@@ -1,0 +1,19 @@
+meta {
+  name: SBDB Filter
+  type: http
+  seq: 8
+}
+
+get {
+  url: https://ssd-api.jpl.nasa.gov/sbdb_query.api?fields=name,spkid,full_name,albedo,spec_T,spec_B,diameter,GM&limit=500&sb-ns=n&sb-kind=a&sb-group=neo
+  body: none
+  auth: none
+}
+
+params:query {
+  fields: name,spkid,full_name,albedo,spec_T,spec_B,diameter,GM
+  limit: 500
+  sb-ns: n
+  sb-kind: a
+  sb-group: neo
+}

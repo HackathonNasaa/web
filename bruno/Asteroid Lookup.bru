@@ -1,0 +1,19 @@
+meta {
+  name: Asteroid Lookup
+  type: http
+  seq: 5
+}
+
+get {
+  url: https://api.nasa.gov/neo/rest/v1/neo/{{asteroid_id}}?api_key={{nasa_key}}
+  body: none
+  auth: none
+}
+
+params:query {
+  api_key: {{nasa_key}}
+}
+
+vars:pre-request {
+  asteroid_id: 2000719
+}

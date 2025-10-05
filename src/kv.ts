@@ -13,6 +13,33 @@ const database = import.meta.env.PROD
     )
   : undefined;
 
-export default createStorage({
+const kv = createStorage({
   driver: database ? dbDriver({ database }) : fsDriver({ base: "./.tmp" })
 });
+
+export default kv;
+
+export async function retrieve(key: string) {
+  const content = await kv.getItemRaw(key).then((result) => result?.valueOf());
+
+  if (!content) {
+    return undefined;
+  }
+
+  const meta = await kv.getMeta(key);
+  const { atime, ttl } = meta;
+
+  if (!atime || !ttl) {
+    return content;
+  }
+
+  const now = new Date();
+
+  if (atime.getTime() + ttl * 1000 <= now.getTime()) {
+    console.log("EXPIRED");
+    kv.del(key);
+    return undefined;
+  }
+
+  return String(content);
+}

@@ -5,6 +5,7 @@ import vercel from "@astrojs/vercel";
 import tailwindcss from "@tailwindcss/vite";
 import { defineConfig, fontProviders } from "astro/config";
 import icon from "astro-icon";
+import mkcert from "vite-plugin-mkcert";
 
 // https://astro.build/config
 export default defineConfig({
@@ -16,7 +17,7 @@ export default defineConfig({
   }),
   integrations: [db(), icon(), sitemap()],
   vite: {
-    plugins: [tailwindcss()]
+    plugins: [tailwindcss(), mkcert()]
   },
   image: {
     domains: ["picsum.photos", "apod.nasa.gov"]

@@ -32,19 +32,24 @@
   },
   "overrides": [
     {
+      "includes": ["**/game.js", "**/QMeteor*.{js,html}"],
+      "linter": {
+        "enabled": false
+      },
+      "assist": {
+        "enabled": false
+      }
+    },
+    {
       "includes": ["**/*.svelte", "**/*.astro", "**/*.vue"],
-
       "linter": {
         "rules": {
           "style": {
             "useConst": "off",
-
             "useImportType": "off"
           },
-
           "correctness": {
             "noUnusedVariables": "off",
-
             "noUnusedImports": "off"
           }
         }
