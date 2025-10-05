@@ -7,8 +7,6 @@ import { defineConfig, fontProviders } from "astro/config";
 import icon from "astro-icon";
 import mkcert from "vite-plugin-mkcert";
 
-import partytown from "@astrojs/partytown";
-
 // https://astro.build/config
 export default defineConfig({
   output: "server",
@@ -17,9 +15,9 @@ export default defineConfig({
       exclude: [/^\/api\/?.*/]
     }
   }),
-  integrations: [db(), icon(), sitemap(), partytown()],
+  integrations: [db(), icon(), sitemap()],
   vite: {
-    plugins: [tailwindcss(), mkcert()],
+    plugins: [tailwindcss(), mkcert()]
   },
   image: {
     domains: ["picsum.photos", "apod.nasa.gov"]

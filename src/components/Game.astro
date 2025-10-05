@@ -3,7 +3,12 @@ import { Image } from "astro:assets";
 
 import Godot from "@assets/QMeteor/QMeteor.png";
 
-export const prerender = true;
+if (import.meta.env.DEV) {
+  Astro.response.headers.append(
+    "permissions-policy",
+    "autoplay=(), cross-origin-isolated=(), fullscreen=(), gamepad=()"
+  );
+}
 ---
 
 <section class="mx-auto aspect-video w-fit md:min-w-[650px]">
@@ -25,7 +30,7 @@ export const prerender = true;
   </div>
 </section>
 
-<script src="@assets/QMeteor/game" />
+<script src="@assets/QMeteor/game"></script>
 
 <style>
   section,
