@@ -5,19 +5,25 @@ import type { SvgComponent } from "astro/types";
 interface Props {
   title: string;
   description: string;
-  source: ImageMetadata & SvgComponent;
+  source: ImageMetadata | SvgComponent;
 }
 
 const { title, description, source: sourceImg } = Astro.props;
 ---
 
 <div
-  class="flex flex-col md:min-h-100 items-center justify-between gap-5 md:gap-10 rounded-2xl bg-[#1B1C67]/60 p-6 font-sans shadow-md transition-all duration-300 hover:-translate-y-1 hover:bg-[#1B1C67]/95 hover:shadow-xl md:flex-row"
+  class="flex flex-col items-center justify-between gap-5 rounded-2xl bg-[#1B1C67]/60 p-6 font-sans shadow-md transition-all duration-300 hover:-translate-y-1 hover:bg-[#1B1C67]/95 hover:shadow-xl md:min-h-100 md:flex-row md:gap-10"
 >
   <div class="bg-opacity-100 flex flex-col gap-3">
     <h2 class="text-2xl font-bold text-white">{title}</h2>
     <span class="text-justify text-white md:text-xl">{description}</span>
   </div>
 
-  <Image src={sourceImg} alt="Logo" layout="constrained" sizes="." class="w-35 aspect-square" />
+  <Image
+    src={sourceImg as ImageMetadata}
+    alt="Logo"
+    layout="constrained"
+    sizes="."
+    class="aspect-square w-35"
+  />
 </div>
