@@ -1,6 +1,7 @@
 import kv, { retrieve } from "@kv";
 import { queryFromSDBD } from "@nasa";
 import type { APIRoute } from "astro";
+import BigNumber from "bignumber.js";
 
 type composition = "metallic" | "rocky" | "carbonaceous";
 
@@ -10,14 +11,14 @@ const tholen_carbon = new Set(["C", "G", "F", "B"]);
 
 const smass_rocky = new Set(["A", "K", "L", "Q", "R"]);
 
-const G = 6.6743e-11;
+const G = BigNumber("6.6743e-11");
 
 export type Asteroid = {
   name?: string;
   fullName?: string;
   spkid: number;
-  mass: number;
-  diameter?: number;
+  mass: BigNumber;
+  diameter?: BigNumber;
   composition: composition;
 };
 
@@ -110,8 +111,8 @@ export const GET: APIRoute = async () => {
       name: asteroid[0] || undefined,
       spkid: Number(asteroid[1]),
       fullName: asteroid[2].trim(),
-      diameter: asteroid[4] && Number(asteroid[3]),
-      mass: asteroid[4] && (Number(asteroid[4]) / G) * 1e6,
+      diameter: asteroid[4] && BigNumber(asteroid[3]),
+      mass: BigNumber(asteroid[4]).div(G.multipliedBy(BigNumber("1e6"))),
       composition
     });
   });
