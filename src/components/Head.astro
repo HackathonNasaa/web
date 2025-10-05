@@ -8,6 +8,8 @@ interface Props {
 }
 
 const { title, description } = Astro.props;
+import Logo from "@/assets/logo_website.svg";
+
 ---
 
 <head>
@@ -15,11 +17,12 @@ const { title, description } = Astro.props;
   <meta name="title" content={title} />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
+
   <Font cssVariable="--font-title" preload />
 
   {description && <meta name="description" content={description} />}
 
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="icon" type="image/svg+xml" href={Logo.src} />
   <meta name="generator" content={Astro.generator} />
   <title>{title}</title>
   <ClientRouter />
