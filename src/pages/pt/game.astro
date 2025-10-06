@@ -1,0 +1,24 @@
+---
+import GameCanvas from "@components/Game.astro";
+import Base from "@layouts/Base.astro";
+
+if (import.meta.env.DEV) {
+  Astro.response.headers.append(
+    "permissions-policy",
+    "autoplay=(), cross-origin-isolated=(), fullscreen=(), gamepad=()"
+  );
+}
+---
+
+<Base title="Game">
+  <h1 class="mx-auto w-max text-4xl text-white">Meteor Madness</h1>
+  <GameCanvas />
+
+  <div class="h-100"></div>
+</Base>
+
+<style>
+  h1 {
+    font-family: var(--font-title);
+  }
+</style>

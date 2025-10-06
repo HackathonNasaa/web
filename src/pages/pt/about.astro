@@ -1,0 +1,69 @@
+---
+import Ase from "@assets/ase.svg";
+import AstroLogo from "@assets/astrologo.svg";
+import Flstudio from "@assets/fl.png";
+import Git from "@assets/git.svg";
+import Godot from "@assets/godot.svg";
+import Inkscape from "@assets/inkscape.svg";
+import Nasa from "@assets/nasa.svg";
+import TailWind from "@assets/tailwind.svg";
+import Card from "@components/Card.astro";
+import Base from "@layouts/Base.astro";
+---
+
+<Base title="About">
+  <h1
+    class="mx-auto w-fit pb-12 text-center text-2xl text-wrap text-white md:text-4xl"
+  >
+    Tools and Technologies
+  </h1>
+  <div class="grid grid-cols-1 gap-2 md:grid-cols-2">
+    <Card
+      title="Astro"
+      description="Astro is a modern web framework optimized for building fast and efficient websites. It was used for the development of this website."
+      source={AstroLogo}
+    />
+    <Card
+      title="NASA API"
+      description="The NASA API was used to obtain asteroid data for use in the game. Some of this data includes the object's name, diameter, mass, and composition by spectrometry."
+      source={Nasa}
+    />
+    <Card
+      title="Godot"
+      description="Godot is a free and open-source game engine used for creating 2D and 3D games. It was the engine used for developing the gamified experience of the project."
+      source={Godot}
+    />
+    <Card
+      title="Aseprite"
+      description="Aseprite is a sprite editor and pixel art tool. It was used to create all the artwork and animations featured in the game's development."
+      source={Ase}
+    />
+    <Card
+      title="FL Studio"
+      description="FL Studio is a Digital Audio Workstation (DAW). It was used to compose and produce the game's original soundtrack."
+      source={Flstudio}
+    />
+    <Card
+      title="Tailwind CSS"
+      description="Tailwind CSS is a utility-first CSS framework that provides pre-defined classes, enabling faster and more consistent styling."
+      source={TailWind}
+    />
+    <Card
+      title="Inkscape"
+      description="Inkscape is a vector graphics editor. It was used to design the project's visual identity featured on the website."
+      source={Inkscape}
+    />
+    <Card
+      title="Git & GitHub"
+      description="Git is a version control system, while GitHub is a platform for hosting and collaborating on Git repositories. Both were used for version control and team collaboration."
+      source={Git}
+    />
+  </div>
+</Base>
+
+<style>
+  h1 {
+    font-family: var(--font-title);
+    opacity: 100%;
+  }
+</style>

@@ -6,25 +6,33 @@ const pages = {
   "/table": "Views"
 };
 
+import { getRelativeLocaleUrl } from "astro:i18n";
 import Logo from "@/assets/logo_website.svg";
+
 const current = Astro.url.pathname;
+
+function toPath(href: string) {
+  return getRelativeLocaleUrl(Astro.currentLocale || "", href);
+}
 ---
 
 <nav
-  class="flex items-center justify-between px-15 py-4 gap-3 text-white border-b border-gray-500 mb-15 flex-col md:flex-row"
+  class="mb-15 flex flex-col items-center justify-between gap-3 border-b border-gray-500 px-15 py-4 text-white md:flex-row"
 >
-  <div class="flex gap-2 items-center">
+  <div class="flex items-center gap-2">
     <Logo class="mx-auto h-1/2 flex-shrink-0 object-contain" />
-    <p class="font-bold text-3xl">Sideralis</p>
+    <p class="text-3xl font-bold">Sideralis</p>
   </div>
 
   <ul class="flex list-none gap-4">
     {
       Object.entries(pages).map(([path, page]) =>
         path === current ? (
-          <li class="rounded-full border-2 border-gray-400 px-8 py-2">{page}</li>
+          <li class="rounded-full border-2 border-gray-400 px-8 py-2">
+            {page}
+          </li>
         ) : (
-          <a href={path}>
+          <a href={toPath(path)}>
             <li class="border-2 border-transparent px-8 py-2">{page}</li>
           </a>
         )

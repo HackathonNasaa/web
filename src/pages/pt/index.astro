@@ -1,0 +1,87 @@
+---
+import { Font, Image } from "astro:assets";
+import Asteroide from "@assets/asteroide.svg";
+import Meteor from "@assets/Meteors.png";
+import Sala from "@assets/Sala_de_comando.png";
+import Base from "@/layouts/Base.astro";
+---
+
+<Base title="Home">
+  <Font cssVariable="--font-title" preload slot="head" />
+
+  <section
+    class="mb-50 flex flex-col items-center justify-center gap-15 md:flex-row lg:gap-52"
+  >
+    <div class="flex flex-col gap-5 md:max-w-xs lg:w-min">
+      <h2 class="font-bold text-yellow-200">Jogo 2D</h2>
+      <h1 class="text-3xl font-bold md:text-4xl lg:text-8xl">
+        <span class="text-white">Project</span>
+        <span class="text-yellow-300">Sideralis</span>
+      </h1>
+      <span class="text-justify text-white">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate
+        modi, quos maxime deserunt ipsa quam sequi ullam! Perferendis veniam
+        ullam aliquam explicabo sint nobis ad!
+      </span>
+      <a
+        class="w-fit cursor-pointer rounded-md bg-pink-400 px-4 py-2 opacity-50"
+        href="/game">Jogue agora!</a
+      >
+    </div>
+    <Asteroide class="hidden h-min w-min md:block md:w-xs lg:w-xl" />
+  </section>
+
+  <section class="flex flex-col md:flex-row items-center gap-15">
+    <Image
+      src={Sala}
+      alt="Placeholder Image"
+      class="w-full pixelated"
+    />
+    <div>
+      <h2 class="mb-6 border-l-8 pl-2 text-3xl text-white">
+        Conheça agora nosso jogo
+      </h2>
+      <span class="text-justify text-white">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis
+        quisquam dignissimos exercitationem officia autem aspernatur vero magnam
+        minima fuga ipsa iusto esse nihil cum perferendis reprehenderit ducimus
+        doloremque inventore unde maxime dicta, quia aperiam fugiat? Optio rem
+        accusamus earum nihil illo, error iusto animi, numquam consequuntur
+        tempore expedita. Exercitationem, soluta.
+      </span>
+    </div>
+  </section>
+
+  <section class="flex flex-col md:flex-row-reverse items-center gap-15">
+    <Image
+      src={Meteor}
+      alt="Placeholder Image"
+      class="w-full pixelated"
+    />
+    <div>
+      <h2 class="mb-6 border-l-8 pl-2 text-3xl text-white">
+        Aprenda sobre NEOs
+      </h2>
+      <span class="text-justify text-white">
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Facilis
+        quaerat totam ullam id iste reprehenderit eaque, perspiciatis voluptate
+        vitae aspernatur sunt culpa exercitationem doloremque magnam alias nobis
+        dicta tempore tenetur impedit fugit in minima error velit. Nobis
+        voluptates nihil facere, veritatis eaque adipisci earum illo, maxime
+        repellendus saepe numquam. Quae!
+      </span>
+    </div>
+  </section>
+
+  <span class="p-100"></span>
+</Base>
+
+<style>
+  h1, h2 {
+    font-family: var(--font-title);
+  }
+
+  .pixelated {
+    image-rendering: pixelated;
+  }
+</style>

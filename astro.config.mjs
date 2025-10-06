@@ -27,6 +27,14 @@ export default defineConfig({
     prefetchAll: true
   },
   site: "https://meteors-ten.vercel.app",
+  i18n: {
+    locales: ["en", "pt"],
+    defaultLocale: "en",
+    routing: {
+      prefixDefaultLocale: false,
+      redirectToDefaultLocale: true
+    }
+  },
   experimental: {
     fonts: [
       {
