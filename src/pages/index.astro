@@ -3,10 +3,10 @@ import { Image } from "astro:assets";
 import Asteroide from "@assets/asteroide.svg";
 import Meteor from "@assets/Meteors.png";
 import Room from "@assets/Sala_de_comando.png";
-import { getDayImage } from "@pages/api/day-picture.webp";
+import Apod from "@components/Apod.astro";
 import Base from "@/layouts/Base.astro";
 
-const apod = await getDayImage();
+export const prerender = true;
 ---
 
 <Base title="Home">
@@ -78,14 +78,7 @@ const apod = await getDayImage();
 
   <div class="mt-20"></div>
 
-  <section class="w-full">
-    <header class="flex flex-col justify-center align-middle">
-      <h2 class="text-center text-2xl text-white">Nasa's Picture of the Day</h2>
-      <span class="text-center text-white">Currently not updating...</span>
-    </header>
-
-    <Image src={apod} inferSize alt="Nasa's Astronomy Picture of the Day" />
-  </section>
+  <Apod server:defer />
 </Base>
 
 <style>

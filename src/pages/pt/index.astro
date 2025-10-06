@@ -3,6 +3,7 @@ import { Font, Image } from "astro:assets";
 import Asteroide from "@assets/asteroide.svg";
 import Meteor from "@assets/Meteors.png";
 import Sala from "@assets/Sala_de_comando.png";
+import Apod from "@components/Apod.astro";
 import Base from "@layouts/Base.astro";
 ---
 
@@ -75,7 +76,9 @@ import Base from "@layouts/Base.astro";
     </div>
   </section>
 
-  <span class="p-100"></span>
+  <span class="mt-20"></span>
+
+  <Apod server:defer />
 </Base>
 
 <style>

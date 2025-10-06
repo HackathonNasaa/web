@@ -1,27 +1,8 @@
 ---
-import DataTable from "@components/DataTable.astro";
+import AsteroidTable from "@components/AsteroidTable.astro";
 import Base from "@layouts/Base.astro";
-
-import { type Asteroid, GET } from "@pages/api/asteroid";
-
-// import { createColumn, createColumnHelper } from "@tanstack/table-core";
-
-const data = await GET(Astro);
-const asteroids: Asteroid[] = await data.json();
-
-function capitalize(val: string) {
-  return String(val).charAt(0).toUpperCase() + String(val).slice(1);
-}
-
-const columns = asteroids[0]
-  ? Object.keys(asteroids[0]).map((key) => ({
-      accessorKey: key,
-      header: capitalize(key),
-      enableSorting: true
-    }))
-  : [];
 ---
 
 <Base title="Table">
-  <DataTable data={asteroids} columns={columns} />
+  <AsteroidTable server:defer />
 </Base>

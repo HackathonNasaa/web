@@ -1,0 +1,25 @@
+---
+import { getImage, Image } from "astro:assets";
+import { getDayImage } from "@pages/api/day-picture.webp";
+
+const apod = await getDayImage();
+
+const image = await getImage({
+  src: apod,
+  inferSize: true
+});
+---
+
+<section class="w-full">
+  <header class="flex flex-col justify-center align-middle">
+    <h2 class="text-center text-2xl text-white">Nasa's Picture of the Day</h2>
+    <span class="text-center text-white">Currently not updating...</span>
+  </header>
+
+  <Image
+    src={image.src}
+    width={image.attributes["width"]}
+    height={image.attributes["height"]}
+    alt="Nasa's Astronomy Picture of the Day"
+  />
+</section>
