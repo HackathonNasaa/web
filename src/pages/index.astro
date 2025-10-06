@@ -1,8 +1,6 @@
 ---
 import { Font, Image } from "astro:assets";
 import Asteroide from "@assets/asteroide.svg";
-import Meteor from "@assets/Meteors.png";
-import Sala from "@assets/Sala_de_comando.png";
 import Base from "@/layouts/Base.astro";
 ---
 
@@ -33,9 +31,10 @@ import Base from "@/layouts/Base.astro";
 
   <section class="flex flex-col md:flex-row items-center gap-15">
     <Image
-      src={Sala}
+      src="https://picsum.photos/500/500"
+      inferSize
       alt="Placeholder Image"
-      class="w-full pixelated"
+      class="w-full"
     />
     <div>
       <h2 class="mb-6 border-l-8 pl-2 text-3xl text-white">
@@ -54,9 +53,10 @@ import Base from "@/layouts/Base.astro";
 
   <section class="flex flex-col md:flex-row-reverse items-center gap-15">
     <Image
-      src={Meteor}
+      src="https://picsum.photos/500/500"
+      inferSize
       alt="Placeholder Image"
-      class="w-full pixelated"
+      class="w-full"
     />
     <div>
       <h2 class="mb-6 border-l-8 pl-2 text-3xl text-white">
@@ -79,9 +79,5 @@ import Base from "@/layouts/Base.astro";
 <style>
   h1, h2 {
     font-family: var(--font-title);
-  }
-
-  .pixelated {
-    image-rendering: pixelated;
   }
 </style>
