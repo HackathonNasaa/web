@@ -4,14 +4,14 @@
 // Incrementing CACHE_VERSION will kick off the install event and force
 // previously cached resources to be updated from the network.
 /** @type {string} */
-const CACHE_VERSION = '1759713936|82090721';
+const CACHE_VERSION = '1759717510|43319785';
 /** @type {string} */
 const CACHE_PREFIX = 'Projet: Siderali-sw-cache-';
 const CACHE_NAME = CACHE_PREFIX + CACHE_VERSION;
 /** @type {string} */
 const OFFLINE_URL = 'QMeteor.offline.html';
 /** @type {boolean} */
-const ENSURE_CROSSORIGIN_ISOLATION_HEADERS = false;
+const ENSURE_CROSSORIGIN_ISOLATION_HEADERS = true;
 // Files that will be cached on load.
 /** @type {string[]} */
 const CACHED_FILES = ["QMeteor.html","QMeteor.js","QMeteor.offline.html","QMeteor.icon.png","QMeteor.apple-touch-icon.png","QMeteor.audio.worklet.js","QMeteor.audio.position.worklet.js"];

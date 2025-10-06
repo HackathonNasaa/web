@@ -11,6 +11,7 @@ const { data, columns } = Astro.props;
   is="data-table"
   data-content={JSON.stringify(data)}
   data-columns={JSON.stringify(columns)}
+  class="overflow-x-scroll"
 >
   <thead>
     <slot name="header" />
@@ -29,13 +30,18 @@ const { data, columns } = Astro.props;
   table[is="data-table"] {
     @apply text-white;
 
+    max-width: 80vw;
+    overflow-x: scroll;
+    white-space: nowrap;
+
     td,
     th {
       @apply min-w-60 border p-2;
     }
   }
 
-  table[is="data-table"] th {
+  table[is="data-table"] th > div {
+    @apply flex flex-col items-center justify-center;
   }
 </style>
 
@@ -124,34 +130,40 @@ const { data, columns } = Astro.props;
           const th = document.createElement("th");
           th.colSpan = header.colSpan;
 
-          th.innerHTML = header.isPlaceholder
+          const inner = document.createElement("div");
+          const headerSpan = document.createElement("span");
+
+          headerSpan.innerHTML = header.isPlaceholder
             ? ""
             : flexRender(header.column.columnDef.header, header.getContext());
+
+          th.append(inner);
           tr.append(th);
-          th.append(document.createElement("span"));
+
+          inner.append(headerSpan);
 
           if (!header.column.getCanSort()) return;
 
-          const div = document.createElement("span");
-          div.classList.add(
+          const sortingBtn = document.createElement("button");
+          sortingBtn.classList.add(
             "w-36",
             ...(header.column.getCanSort()
               ? ["cursor-pointer", "select-none"]
               : [])
           );
-          div.onclick = (e) => {
+
+          sortingBtn.onclick = (e) => {
             if (header.column.getToggleSortingHandler()) {
-              console.log("hiiiiii");
               header.column.getToggleSortingHandler()?.(e);
             }
           };
 
-          div.innerHTML +=
+          sortingBtn.innerHTML +=
             {
               asc: "🔼",
               desc: "🔽"
-            }[header.column.getIsSorted() as string] ?? "-";
-          th.appendChild(div);
+            }[header.column.getIsSorted() as string] ?? "sort";
+          inner.appendChild(sortingBtn);
         });
         thead.append(tr);
       });

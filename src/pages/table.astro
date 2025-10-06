@@ -6,5 +6,14 @@ export const prerender = true;
 ---
 
 <Base title="Table">
+  <h1 class="mb-7 text-center font-bold text-2xl text-white md:text-3xl">
+    Asteroid Table
+  </h1>
   <AsteroidTable server:defer />
 </Base>
+
+<style>
+  h1 {
+    font-family: var(--font-title);
+  }
+</style>
