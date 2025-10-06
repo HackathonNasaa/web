@@ -5,8 +5,13 @@ import Godot from "@assets/QMeteor/QMeteor.png";
 
 if (import.meta.env.DEV) {
   Astro.response.headers.append(
-    "permissions-policy",
+    "Permissions-Policy",
     "autoplay=(), cross-origin-isolated=(), fullscreen=(), gamepad=()"
+  );
+
+  Astro.response.headers.append(
+    "Content-Security-Policy",
+    "default-src https: data: 'unsafe-inline' 'unsafe-eval'"
   );
 }
 ---

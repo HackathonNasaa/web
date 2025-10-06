@@ -1,11 +1,11 @@
-import "./QMeteor";
+import "@assets/QMeteor/QMeteor";
 
 const GODOT_CONFIG = {
   args: [],
   canvasResizePolicy: 1,
   emscriptenPoolSize: 8,
-  ensureCrossOriginIsolationHeaders: true,
-  executable: "/QMeteor",
+  ensureCrossOriginIsolationHeaders: false,
+  executable: "/QMeteor/QMeteor",
   experimentalVK: false,
   fileSizes: {
     "/QMeteor/QMeteor.pck": 575692,
@@ -16,15 +16,11 @@ const GODOT_CONFIG = {
   godotPoolSize: 4,
   serviceWorker: "/QMeteor/QMeteor.service.worker.js"
 };
-const GODOT_THREADS_ENABLED = true;
+const GODOT_THREADS_ENABLED = false;
 
 let engine;
 
 document.addEventListener("astro:page-load", function () {
-  if (engine) {
-    return;
-  }
-
   engine = new Engine(GODOT_CONFIG);
 
   const statusOverlay = document.getElementById("status");
