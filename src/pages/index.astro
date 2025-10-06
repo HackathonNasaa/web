@@ -35,7 +35,7 @@ import Base from "@/layouts/Base.astro";
     <Image
       src={Room}
       alt="A screenshot of the game's main room, the control room of a space station. The outer space can be seem from the windows, with a view of the Earth, and a big yellow button among the data panels and station terminals."
-      class="w-full"
+      class="pixelated w-full"
     />
     <div>
       <h2 class="mb-6 border-l-8 pl-2 text-3xl text-white">
@@ -53,7 +53,11 @@ import Base from "@/layouts/Base.astro";
   </section>
 
   <section class="flex flex-col items-center gap-15 md:flex-row-reverse">
-    <Image src={Meteor} alt="Three pixelated meteor sprites." class="w-full" />
+    <Image
+      src={Meteor}
+      alt="Three pixelated meteor sprites."
+      class="pixelated w-full"
+    />
     <div>
       <h2 class="mb-6 border-l-8 pl-2 text-3xl text-white">
         Learn about NEOs.
@@ -76,5 +80,9 @@ import Base from "@/layouts/Base.astro";
   h1,
   h2 {
     font-family: var(--font-title);
+  }
+
+  .pixelated {
+    image-rendering: pixelated;
   }
 </style>
