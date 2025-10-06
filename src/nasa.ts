@@ -5,6 +5,18 @@ const nasa_api = import.meta.env.NASA_API;
 
 const sdbd_api = import.meta.env.SDBD_API;
 
+export function checkKey(key: string | undefined | null) {
+  if (!key) {
+    return 401;
+  }
+
+  if (key === import.meta.env.NASA_API_KEY) {
+    return 200;
+  }
+
+  return 403;
+}
+
 const search = new URLSearchParams();
 search.append("api_key", import.meta.env.NASA_API_KEY);
 

@@ -1,14 +1,15 @@
 ---
-import { Font, Image } from "astro:assets";
+import { Image } from "astro:assets";
 import Asteroide from "@assets/asteroide.svg";
 import Meteor from "@assets/Meteors.png";
 import Room from "@assets/Sala_de_comando.png";
+import { getDayImage } from "@pages/api/day-picture.webp";
 import Base from "@/layouts/Base.astro";
+
+const apod = await getDayImage();
 ---
 
 <Base title="Home">
-  <Font cssVariable="--font-title" preload slot="head" />
-
   <section
     class="mb-50 flex flex-col items-center justify-center gap-15 md:flex-row lg:gap-52"
   >
@@ -73,7 +74,19 @@ import Base from "@/layouts/Base.astro";
     </div>
   </section>
 
-  <span class="p-100"></span>
+  <div class="mt-20" />
+
+  <section class="w-full">
+    <header class="flex flex-col justify-center align-middle">
+      <h2 class="text-center text-2xl text-white">Nasa's Picture of the Day</h2>
+      <span class="text-center text-white"
+        >Currently not updating...</span
+      >
+    </header>
+
+    <Image src={apod} inferSize alt="Nasa's Astronomy Picture of the Day" />
+  </section>
+
 </Base>
 
 <style>
