@@ -11,7 +11,6 @@ const { data, columns } = Astro.props;
   is="data-table"
   data-content={JSON.stringify(data)}
   data-columns={JSON.stringify(columns)}
-  class="overflow-x-scroll"
 >
   <thead>
     <slot name="header" />
@@ -30,9 +29,10 @@ const { data, columns } = Astro.props;
   table[is="data-table"] {
     @apply text-white;
 
-    max-width: 80vw;
+    max-width: 90vw;
     overflow-x: scroll;
     white-space: nowrap;
+    display: block;
 
     td,
     th {

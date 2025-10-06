@@ -18,12 +18,12 @@ const backgroundImage = (
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en" class="h-screen w-screen">
   <Head {...Astro.props}>
     <slot name="head" />
   </Head>
 
-  <body class="h-screen w-screen bg-purple-950">
+  <body class="bg-purple-950">
     <slot />
   </body>
 </html>
