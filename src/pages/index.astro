@@ -1,6 +1,8 @@
 ---
 import { Font, Image } from "astro:assets";
 import Asteroide from "@assets/asteroide.svg";
+import Meteor from "@assets/Meteors.png";
+import Room from "@assets/Sala_de_comando.png";
 import Base from "@/layouts/Base.astro";
 ---
 
@@ -29,11 +31,10 @@ import Base from "@/layouts/Base.astro";
     <Asteroide class="hidden h-min w-min md:block md:w-xs lg:w-xl" />
   </section>
 
-  <section class="flex flex-col md:flex-row items-center gap-15">
+  <section class="flex flex-col items-center gap-15 md:flex-row">
     <Image
-      src="https://picsum.photos/500/500"
-      inferSize
-      alt="Placeholder Image"
+      src={Room}
+      alt="A screenshot of the game's main room, the control room of a space station. The outer space can be seem from the windows, with a view of the Earth, and a big yellow button among the data panels and station terminals."
       class="w-full"
     />
     <div>
@@ -51,13 +52,8 @@ import Base from "@/layouts/Base.astro";
     </div>
   </section>
 
-  <section class="flex flex-col md:flex-row-reverse items-center gap-15">
-    <Image
-      src="https://picsum.photos/500/500"
-      inferSize
-      alt="Placeholder Image"
-      class="w-full"
-    />
+  <section class="flex flex-col items-center gap-15 md:flex-row-reverse">
+    <Image src={Meteor} alt="Three pixelated meteor sprites." class="w-full" />
     <div>
       <h2 class="mb-6 border-l-8 pl-2 text-3xl text-white">
         Learn about NEOs.
@@ -77,7 +73,8 @@ import Base from "@/layouts/Base.astro";
 </Base>
 
 <style>
-  h1, h2 {
+  h1,
+  h2 {
     font-family: var(--font-title);
   }
 </style>
