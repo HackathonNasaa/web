@@ -37,6 +37,7 @@ const apod = await getDayImage();
       src={Room}
       alt="A screenshot of the game's main room, the control room of a space station. The outer space can be seem from the windows, with a view of the Earth, and a big yellow button among the data panels and station terminals."
       class="pixelated w-full"
+      layout="constrained"
     />
     <div>
       <h2 class="mb-6 border-l-8 pl-2 text-3xl text-white">
@@ -58,6 +59,7 @@ const apod = await getDayImage();
       src={Meteor}
       alt="Three pixelated meteor sprites."
       class="pixelated w-full"
+      layout="constrained"
     />
     <div>
       <h2 class="mb-6 border-l-8 pl-2 text-3xl text-white">
@@ -74,19 +76,16 @@ const apod = await getDayImage();
     </div>
   </section>
 
-  <div class="mt-20" />
+  <div class="mt-20"></div>
 
   <section class="w-full">
     <header class="flex flex-col justify-center align-middle">
       <h2 class="text-center text-2xl text-white">Nasa's Picture of the Day</h2>
-      <span class="text-center text-white"
-        >Currently not updating...</span
-      >
+      <span class="text-center text-white">Currently not updating...</span>
     </header>
 
     <Image src={apod} inferSize alt="Nasa's Astronomy Picture of the Day" />
   </section>
-
 </Base>
 
 <style>

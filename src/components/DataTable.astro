@@ -148,8 +148,8 @@ const { data, columns } = Astro.props;
 
           div.innerHTML +=
             {
-              asc: " 🔼",
-              desc: " 🔽"
+              asc: "🔼",
+              desc: "🔽"
             }[header.column.getIsSorted() as string] ?? "-";
           th.appendChild(div);
         });

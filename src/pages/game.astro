@@ -11,7 +11,7 @@ if (import.meta.env.DEV) {
 ---
 
 <Base title="Game">
-  <h1 class="mx-auto w-max text-4xl text-white">Meteor Madness</h1>
+  <h1 class="mx-auto w-max text-4xl text-white pb-5">Meteor Madness</h1>
   <GameCanvas />
 
   <div class="h-100"></div>
@@ -20,5 +20,11 @@ if (import.meta.env.DEV) {
 <style>
   h1 {
     font-family: var(--font-title);
+  }
+</style>
+
+<style is:global>
+  main {
+    max-width: 100%;
   }
 </style>
