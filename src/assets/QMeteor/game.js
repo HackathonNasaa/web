@@ -1,10 +1,10 @@
-import "./QMeteor";
+import "@assets/QMeteor/QMeteor";
 
 const GODOT_CONFIG = {
   args: [],
   canvasResizePolicy: 1,
   emscriptenPoolSize: 8,
-  ensureCrossOriginIsolationHeaders: true,
+  ensureCrossOriginIsolationHeaders: false,
   executable: "/QMeteor",
   experimentalVK: false,
   fileSizes: {
